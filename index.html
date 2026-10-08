@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sơ đồ backlink PLSB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: 2 sơ đồ xếp dọc, mỗi sơ đồ là một thẻ có tiêu đề + SVG cuộn ngang trên màn hẹp */
+:root{
+  --bg:#f4f6f9; --surface:#ffffff; --ink:#15233f; --muted:#5b6880; --line:#c9d2df;
+  --navy:#1b2d52; --steel:#3a78a8; --band:#e9f1f8; --orange:#d9772b; --google:#2f9a5b; --grey:#7c8799;
+  --up:#1f8a4c; --warn:#b7791f; --danger:#c0392b; --chip:#eef2f7; --green:#1f9d55;
+  --f-body:"Be Vietnam Pro",system-ui,sans-serif; --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1522; --surface:#172034; --ink:#e3e9f4; --muted:#9aa6bd; --line:#33405a;
+  --navy:#9fb8e6; --steel:#6fb0e0; --band:#1a2840; --orange:#f0954d; --google:#5cc58a; --grey:#97a2b6;
+  --up:#5cc58a; --warn:#e3b04f; --danger:#f07a6d; --chip:#22304a; --green:#5cc58a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1522; --surface:#172034; --ink:#e3e9f4; --muted:#9aa6bd; --line:#33405a;
+  --navy:#9fb8e6; --steel:#6fb0e0; --band:#1a2840; --orange:#f0954d; --google:#5cc58a; --grey:#97a2b6;
+  --up:#5cc58a; --warn:#e3b04f; --danger:#f07a6d; --chip:#22304a; --green:#5cc58a; color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55}
+.wrap{max-width:1280px;margin:0 auto;padding-inline:16px;padding-block:28px 56px;display:flex;flex-direction:column;gap:28px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--steel)}
+h1,h2{margin:0;color:var(--navy);text-wrap:balance}
+h1{font-size:26px;font-weight:800}
+h2{font-size:20px;font-weight:800}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.card-head{padding:18px 20px 0}
+.diagram{overflow-x:auto;padding:8px}
+.diagram svg{display:block;min-width:1100px;width:100%;height:auto}
+svg text{font-family:var(--f-body)}
+.lane{font-size:13px;font-weight:800;letter-spacing:.1em;fill:var(--steel)}
+.lane-sub{font-size:12px;fill:var(--muted)}
+.sep{stroke:var(--line);stroke-dasharray:4 6}
+.band{fill:var(--band);stroke:var(--line)}
+.band-label{font-size:11px;font-weight:700;letter-spacing:.12em;fill:var(--muted)}
+.node rect.box{fill:var(--surface);stroke:var(--navy);stroke-width:1.6}
+.node.t1 rect.box{stroke-width:2.2}
+.node.home rect.box{fill:var(--band);stroke:var(--steel);stroke-width:2}
+.node.soft rect.box{stroke:var(--grey);stroke-dasharray:6 5}
+.node.entity rect.box{stroke:var(--green)}
+.n-title{font-size:15px;font-weight:700;fill:var(--ink)}
+.n-url{font-family:var(--f-mono);font-size:11.5px;fill:var(--steel)}
+.n-topic{font-size:12px;fill:var(--muted)}
+.n-trend{font-size:11.5px;font-weight:600}
+.tr-up{fill:var(--up)} .tr-warn{fill:var(--warn)} .tr-na{fill:var(--muted)}
+.tag rect{fill:var(--chip);stroke:var(--line)} .tag text{font-size:11px;font-weight:700;fill:var(--ink)}
+.tag.hub rect{fill:var(--navy);stroke:var(--navy)} .tag.hub text{fill:var(--surface)}
+.e-home{fill:none;stroke:var(--navy);stroke-width:2.4}
+.e-money{fill:none;stroke:var(--navy);stroke-width:3.4}
+.e-t2{fill:none;stroke:var(--steel);stroke-width:2}
+.e-ring{fill:none;stroke:var(--orange);stroke-width:2}
+.e-green{fill:none;stroke:var(--green);stroke-width:2}
+.e-push{fill:none;stroke:var(--grey);stroke-width:1.8;stroke-dasharray:7 6}
+.e-label{font-size:11.5px;fill:var(--muted);font-style:italic}
+.ring-frame{fill:none;stroke:var(--danger);stroke-width:1.6;stroke-dasharray:8 6}
+.domain-frame{fill:var(--band);stroke:var(--steel);stroke-width:1.6;stroke-dasharray:8 6}
+.domain-label{font-size:12px;font-weight:800;letter-spacing:.1em;fill:var(--steel)}
+.badge rect{fill:var(--danger)} .badge text{font-size:11.5px;font-weight:700;fill:#fff}
+.mk-home,.mk-money{fill:var(--navy)} .mk-t2{fill:var(--steel)} .mk-ring{fill:var(--orange)} .mk-push{fill:var(--grey)} .mk-green{fill:var(--green)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;padding:4px 20px 16px;font-size:13px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{display:inline-block;width:26px;height:0;border-top:2.4px solid}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Phế Liệu Sơn Báu · trang chủ phelieusonbau.vn</div>
+    <h1>Sơ đồ backlink PLSB</h1>
+  </header>
+
+  <section class="card">
+    <div class="card-head"><div class="eyebrow">Sơ đồ 1</div><h2>Building textlink tầng</h2></div>
+    <div class="diagram" id="d-tas"></div>
+    <div class="legend">
+      <span><i style="border-color:var(--navy)"></i>Tier 1 trỏ thẳng trang chủ</span>
+      <span><i style="border-color:var(--steel)"></i>Tier 2 nuôi Tier 1</span>
+      <span><i style="border-color:var(--grey);border-top-style:dashed"></i>Nguồn đẩy GSA / BPN</span>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><div class="eyebrow">Sơ đồ 2</div><h2>Sơ đồ method 08</h2></div>
+    <div class="diagram" id="d-m08"></div>
+    <div class="legend">
+      <span><i style="border-color:var(--navy);border-top-width:3.4px"></i>Hub trỏ thẳng money site</span>
+      <span><i style="border-color:var(--steel)"></i>Vệ tinh trỏ về hub (internal link)</span>
+      <span><i style="border-color:var(--orange)"></i>Vòng internal link giữa các vệ tinh</span>
+      <span><i style="border-color:var(--green)"></i>Support post · Tầng 2 bổ trợ</span>
+      <span><i style="border-color:var(--grey);border-top-style:dashed"></i>Tầng 3 BPN / GSA</span>
+    </div>
+  </section>
+</div>
+
+<script>
+const DOT={steel:"var(--steel)",orange:"var(--orange)",google:"var(--google)",grey:"var(--grey)",green:"var(--green)"};
+function el(tag,attrs,parent){const e=document.createElementNS("http://www.w3.org/2000/svg",tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+function txt(parent,x,y,cls,s,anchor){const t=el("text",{x,y,class:cls},parent);if(anchor)t.setAttribute("text-anchor",anchor);t.textContent=s;return t}
+function defs(svg){const d=el("defs",{},svg);for(const k of ["home","money","t2","ring","push","green"]){const m=el("marker",{id:"mk-"+k,viewBox:"0 0 10 10",refX:"9",refY:"5",markerWidth:k==="money"?"6":"7",markerHeight:k==="money"?"6":"7",orient:"auto-start-reverse"},d);el("path",{d:"M0,0 L10,5 L0,10 z",class:"mk-"+k},m)}}
+function drawNodes(svg,N){
+  for(const id in N){
+    const n=N[id];const g=el("g",{class:"node "+(n.cls||"")},svg);
+    el("rect",{x:n.x,y:n.y,width:n.w,height:n.h,rx:12,class:"box"},g);
+    let tx=n.x+18;
+    if(n.dot){el("circle",{cx:n.x+20,cy:n.y+27,r:6,fill:DOT[n.dot]},g);tx=n.x+34}
+    txt(g,tx,n.y+32,"n-title",n.title);
+    if(n.tag){const w=n.tag.length*6.6+16;const tg=el("g",{class:"tag"+(n.tagCls?" "+n.tagCls:"")},g);el("rect",{x:n.x+n.w-w-12,y:n.y+15,width:w,height:21,rx:10.5},tg);txt(tg,n.x+n.w-12-w/2,n.y+29.5,"",n.tag,"middle")}
+    n.lines.forEach(([c,s],i)=>txt(g,n.x+18,n.y+56+i*19,c,s));
+    if(n.center)g.querySelectorAll(":scope > text").forEach(t=>{t.setAttribute("x",n.x+n.w/2);t.setAttribute("text-anchor","middle")});
+  }
+}
+function drawEdges(svg,E){for(const [cls,k,d] of E)el("path",{d,class:cls,"marker-end":"url(#mk-"+k+")"},svg)}
+
+/* ---------- Sơ đồ 1: TAS ---------- */
+function drawTAS(){
+  const svg=el("svg",{viewBox:"0 0 1460 780",role:"img","aria-label":"Sơ đồ Building textlink tầng trỏ về trang chủ phelieusonbau.vn"});defs(svg);
+  for(const [a,b,y] of [["TẦNG ĐÍCH","money site · 1",82],["TIER 1","trỏ thẳng · 4",272],["TIER 2","nuôi tier 1 · 4",490],["NGUỒN ĐẨY","ngoài hệ",712]]){txt(svg,24,y,"lane",a);txt(svg,24,y+20,"lane-sub",b)}
+  for(const y of [166,386,644])el("line",{x1:180,x2:1440,y1:y,y2:y,class:"sep"},svg);
+  el("rect",{x:180,y:194,width:1260,height:166,rx:16,class:"band"},svg);
+  txt(svg,1424,352,"band-label","TRỎ THẲNG MONEY SITE · 4","end");
+  drawEdges(svg,[
+    ["e-home","home","M557,212 C557,170 640,170 640,128"],["e-home","home","M801,212 C801,170 700,170 700,128"],["e-home","home","M1045,212 C1045,170 760,170 760,128"],["e-home","home","M1289,212 C1289,165 820,170 820,128"],
+    ["e-t2","t2","M557,432 V338"],
+    ["e-t2","t2","M380,432 C380,385 500,385 500,338"],["e-t2","t2","M410,432 C410,372 740,392 740,338"],
+    ["e-t2","t2","M800,432 C800,385 620,385 620,338"],["e-t2","t2","M870,432 C870,390 840,380 840,338"],["e-t2","t2","M950,432 C950,385 1000,385 1000,338"],
+    ["e-t2","t2","M1210,432 C1210,385 1090,385 1090,338"],["e-t2","t2","M1330,432 C1330,385 1300,385 1300,338"],
+    ["e-push","push","M592,682 V600"]
+  ]);
+  txt(svg,604,630,"e-label","vào 4 Support Post");
+  drawNodes(svg,{
+    home:{x:560,y:36,w:340,h:92,cls:"home",center:true,title:"/ (trang chủ)",lines:[["n-url","phelieusonbau.vn"],["n-topic","Money site · 4 đường vào từ Tier 1"]]},
+    wf:{x:444,y:212,w:226,h:126,cls:"t1",dot:"steel",title:"Webflow",tag:"DR 92",lines:[["n-url","thu-mua-phe-lieu-gia-cao"],["n-url",".webflow.io"],["n-topic","thu mua phế liệu giá cao"],["n-trend tr-up","▲ traffic nền +39%"]]},
+    lv:{x:688,y:212,w:226,h:126,cls:"t1",dot:"orange",title:"Lovable",tag:"DR 91",lines:[["n-url","tinh-gia-phe-lieu"],["n-url",".lovable.app"],["n-topic","tool tính giá theo kg"],["n-trend tr-up","▲ 3,4 nghìn → 184 nghìn"]]},
+    gs:{x:932,y:212,w:226,h:126,cls:"t1",dot:"google",title:"Google Sites",tag:"DR 100",lines:[["n-url","sites.google.com/view/"],["n-url","phe-lieu-son-bau"],["n-topic","site thương hiệu + Maps"],["n-trend tr-warn","▲ +486%, có sóng spam"]]},
+    pr:{x:1176,y:212,w:226,h:126,cls:"t1",dot:"grey",title:"Báo PR",tag:"theo báo",lines:[["n-topic","Báo điện tử Việt Nam"],["n-topic","tin thương hiệu"],["n-topic","chờ chọn báo"],["n-trend tr-na","Không phải parasite"]]},
+    soc:{x:196,y:432,w:224,h:126,dot:"grey",title:"Social entity",tag:"DR 97+",lines:[["n-topic","Facebook · YouTube"],["n-topic","LinkedIn · X · Pinterest"],["n-topic","→ Webflow, Lovable"]]},
+    spr:{x:444,y:432,w:296,h:168,dot:"steel",title:"4 Support Post",tag:"Webflow",lines:[["n-url","/blog/bang-gia-phe-lieu-hom-nay"],["n-url","/blog/cach-ban-phe-lieu-duoc-gia-cao"],["n-url","/blog/quy-trinh-thu-mua-tan-noi"],["n-url","/blog/phe-lieu-nao-duoc-gia-nhat"],["n-topic","nối chuỗi 1 → 2 → 3 → 4"]]},
+    tl:{x:760,y:432,w:236,h:126,dot:"grey",title:"Textlink sidebar",tag:"500 link",lines:[["n-topic","Site cùng theme"],["n-topic","Anchor: thu mua phế liệu"],["n-topic","+ brand"],["n-topic","→ Webflow, Lovable, G.Sites"]]},
+    tlt:{x:1164,y:432,w:236,h:110,dot:"grey",title:"Textlink traffic",tag:"theme",lines:[["n-topic","trust lịch theme"],["n-topic","→ Google Sites, Báo PR"]]},
+    gsa:{x:442,y:682,w:300,h:62,cls:"soft",title:"GSA / BPN",lines:[["n-topic","nguồn đẩy ngoài hệ"]]}
+  });
+  document.getElementById("d-tas").appendChild(svg);
+}
+
+/* ---------- Sơ đồ 2: method 08 ---------- */
+function drawM08(){
+  const svg=el("svg",{viewBox:"0 0 1640 800",role:"img","aria-label":"Sơ đồ method 08: 4 vệ tinh cùng domain trỏ về hub giá cao, hub trỏ về trang chủ"});defs(svg);
+  for(const [a,b,y] of [["TẦNG ĐÍCH","money site",82],["CỤM METHOD 08","cùng 1 domain",300],["","internal link",340],["BỔ TRỢ","tầng 2 · tầng 3",722]]){if(a)txt(svg,24,y,"lane",a);txt(svg,24,y+20,"lane-sub",b)}
+  for(const y of [166,656])el("line",{x1:180,x2:1620,y1:y,y2:y,class:"sep"},svg);
+  el("rect",{x:400,y:196,width:940,height:428,rx:18,class:"domain-frame"},svg);
+  txt(svg,420,218,"domain-label","CÙNG 1 DOMAIN · *.MYSTRIKINGLY.COM · DR 89 · TRAFFIC NỀN +64%");
+  drawEdges(svg,[
+    ["e-money","money","M870,360 V128"],
+    ["e-ring","ring","M720,262 H1020"],["e-ring","ring","M1160,338 V490"],["e-ring","ring","M1020,568 H720"],["e-ring","ring","M580,490 V338"],
+    ["e-t2","t2","M685,338 C685,378 700,396 730,396"],["e-t2","t2","M1055,338 C1055,378 1040,396 1010,396"],["e-t2","t2","M685,490 C685,450 700,432 730,432"],["e-t2","t2","M1055,490 C1055,450 1040,432 1010,432"],
+    ["e-green","green","M1370,340 C1210,340 1200,414 1010,414"],
+    ["e-green","green","M390,546 H440"],
+    ["e-green","green","M600,680 V624"],
+    ["e-push","push","M1180,680 V624"],
+    ["e-push","push","M1340,722 H1495 V440"]
+  ]);
+  txt(svg,612,656,"e-label","vào hub + 4 vệ tinh");
+  txt(svg,1192,656,"e-label","vào 4 vệ tinh");
+  txt(svg,1505,560,"e-label","vào 4 Support Post");
+  drawNodes(svg,{
+    home:{x:700,y:36,w:340,h:92,cls:"home",center:true,title:"/ (trang chủ)",lines:[["n-url","phelieusonbau.vn"],["n-topic","Money site · nhận link từ hub"]]},
+    hub:{x:730,y:360,w:280,h:108,cls:"t1",dot:"steel",title:"Giá cao · hub",tag:"TIER 1",tagCls:"hub",lines:[["n-url","thu-mua-phe-lieu-gia-cao"],["n-url",".mystrikingly.com"],["n-topic","thu mua phế liệu giá cao"]]},
+    bd:{x:440,y:230,w:280,h:108,dot:"steel",title:"Bình Dương",tag:"→ hub",lines:[["n-url","thu-mua-phe-lieu-binh-duong"],["n-url",".mystrikingly.com"],["n-topic","thu mua phế liệu Bình Dương"]]},
+    cm:{x:1020,y:230,w:280,h:108,dot:"steel",title:"Cà Mau",tag:"→ hub",lines:[["n-url","thu-mua-phe-lieu-ca-mau"],["n-url",".mystrikingly.com"],["n-topic","thu mua phế liệu Cà Mau"]]},
+    th:{x:440,y:490,w:280,h:108,dot:"steel",title:"Giá thép",tag:"→ hub",lines:[["n-url","gia-thep-phe-lieu"],["n-url",".mystrikingly.com"],["n-topic","bảng giá thép phế liệu"]]},
+    in:{x:1020,y:490,w:280,h:108,dot:"steel",title:"Giá inox",tag:"→ hub",lines:[["n-url","gia-inox-phe-lieu"],["n-url",".mystrikingly.com"],["n-topic","bảng giá inox phế liệu"]]},
+    spr:{x:1370,y:240,w:250,h:200,cls:"entity",dot:"green",title:"4 Support Post",tag:"→ hub",lines:[["n-url","/blog/bang-gia-phe-lieu-hom-nay"],["n-url","/blog/ban-phe-lieu-gia-cao"],["n-url","/blog/thu-mua-tan-noi"],["n-url","/blog/phe-lieu-gia-nhat"],["n-topic","nối chuỗi 1 → 2 → 3 → 4"],["n-topic","trên site giá cao"]]},
+    spl:{x:190,y:470,w:200,h:180,cls:"entity",dot:"green",title:"4 Support Post",lines:[["n-url","/blog/thep-hop"],["n-url","/blog/thep-tam"],["n-url","/blog/sat-thep-cong-trinh"],["n-url","/blog/khoi-luong-thep"],["n-topic","nối chuỗi 1 → 2 → 3 → 4"],["n-topic","trên site giá thép"]]},
+    soc:{x:440,y:680,w:320,h:96,cls:"entity",dot:"green",title:"Tầng 2 · social, web 2.0",lines:[["n-topic","Facebook · YouTube · LinkedIn · X · Pinterest"],["n-topic","xác thực entity"]]},
+    gsa:{x:1020,y:680,w:320,h:96,cls:"soft",title:"Tầng 3 · BPN, GSA",lines:[["n-topic","vendor kém chất lượng nếu có"],["n-topic","không trỏ thẳng money site"]]}
+  });
+  document.getElementById("d-m08").appendChild(svg);
+}
+drawTAS();drawM08();
+</script>
+</body>
+</html>
